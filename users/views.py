@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from .models import User
 
+def containsNumber(string):
+    return any(char.isdigit() for char in string)
+
 def home(request):
   users = User.objects.all()
   return render(request, 'index.html', {'users': users})
@@ -10,14 +13,17 @@ def create(request):
   name = request.POST.get('name')
 
   if name == '':
-    messages.info(request, 'Name is required')
+    messages.info(request, 'Name can not be empty')
     return redirect(home)
-  if len(name) < 3:
-     messages.info(request, 'Name need to be at least 3 characters')
-     return redirect(home)
-  else:
-    User.objects.create(name=name)
+  elif len(name) < 3:
+    messages.info(request, 'Name must be at least 3 characters long')
     return redirect(home)
+  elif containsNumber(name):
+    messages.info(request, 'Name cannot contain numbers')
+    return redirect(home)
+
+  User.objects.create(name=name)
+  return redirect(home)
     
 def updateDetails(request, id):
   user = User.objects.get(id=id)
@@ -25,6 +31,17 @@ def updateDetails(request, id):
 
 def update(request, id):
   name = request.POST.get('name')
+
+  if name == '':
+      messages.info(request, 'New name can not be empty')
+      return redirect(updateDetails, id)
+  elif len(name) < 3:
+      messages.info(request, 'New name must be at least 3 characters long')
+      return redirect(updateDetails, id)
+  elif containsNumber(name):
+      messages.info(request, 'New name cannot contain numbers')
+      return redirect(updateDetails, id)
+
   user = User.objects.get(id=id)
   user.name = name
   user.save()
