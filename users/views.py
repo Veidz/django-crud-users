@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib import messages
 from .models import User
 
 def home(request):
@@ -7,9 +8,17 @@ def home(request):
 
 def create(request):
   name = request.POST.get('name')
-  User.objects.create(name=name)
-  return redirect(home)
 
+  if name == '':
+    messages.info(request, 'Name is required')
+    return redirect(home)
+  if len(name) < 3:
+     messages.info(request, 'Name need to be at least 3 characters')
+     return redirect(home)
+  else:
+    User.objects.create(name=name)
+    return redirect(home)
+    
 def updateDetails(request, id):
   user = User.objects.get(id=id)
   return render(request, 'update.html', {'user': user})
