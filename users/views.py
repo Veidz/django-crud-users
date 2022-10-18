@@ -17,8 +17,11 @@ def updateDetails(request, id):
 def update(request, id):
   name = request.POST.get('name')
   user = User.objects.get(id=id)
-
   user.name = name
-
   user.save()
+  return redirect(home)
+
+def delete(request, id):
+  user = User.objects.get(id=id)
+  user.delete()
   return redirect(home)
