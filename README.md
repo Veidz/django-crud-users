@@ -1,1 +1,1 @@
-# django-crud-users
+# CRUD Users using Python Django
