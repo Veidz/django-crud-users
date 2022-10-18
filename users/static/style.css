@@ -27,7 +27,7 @@
   margin-right: 35px;
 }
 
-.create-form input {
+.form input {
   border: none;
   border-radius: 2px;
   padding: 0.4em;
@@ -35,7 +35,7 @@
   font-family: inherit;
 }
 
-.create-form button {
+.form button {
   border: none;
   border-radius: 2px;
   padding: 0.4em;
@@ -68,4 +68,8 @@
 .users-list li a:last-child {
   text-align: right;
   color: #f54242;
+}
+
+.user-details {
+  margin-left: 0.8em;
 }
