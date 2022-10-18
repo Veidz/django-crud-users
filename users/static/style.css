@@ -17,6 +17,16 @@
   margin-bottom: 1em;
 }
 
+.error-container {
+  position: relative;
+}
+
+.error-container p {
+  color: #f54242;
+  text-align: right;
+  margin-right: 35px;
+}
+
 .create-form input {
   border: none;
   border-radius: 2px;
@@ -33,6 +43,7 @@
 }
 
 .users-list {
+  margin-top: 30px;
   margin-left: 2.4em;
   margin-right: 2.4em;
   list-style-type: none;

@@ -21,6 +21,12 @@
       </form>
     </div>
 
+    <div class="error-container">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+
     <ul class="users-list">
       {% for user in users %}
         <li> {{ user.id }} - {{ user.name }}
