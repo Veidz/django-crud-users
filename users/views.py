@@ -1,9 +1,8 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import User
 
-def containsNumber(string):
-    return any(char.isdigit() for char in string)
+from users.utils.validations import Validations
+from .models import User
 
 def home(request):
   users = User.objects.all()
@@ -18,7 +17,7 @@ def create(request):
   elif len(name) < 3:
     messages.info(request, 'Name must be at least 3 characters long')
     return redirect(home)
-  elif containsNumber(name):
+  elif Validations.containsNumber(name):
     messages.info(request, 'Name cannot contain numbers')
     return redirect(home)
 
@@ -38,7 +37,7 @@ def update(request, id):
   elif len(name) < 3:
       messages.info(request, 'New name must be at least 3 characters long')
       return redirect(updateDetails, id)
-  elif containsNumber(name):
+  elif Validations.containsNumber(name):
       messages.info(request, 'New name cannot contain numbers')
       return redirect(updateDetails, id)
 
