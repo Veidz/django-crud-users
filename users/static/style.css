@@ -1,16 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-*, 
-*:after,
-*:before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 50%;
+  background-color: #212121;
+  box-shadow: 8px 4px 5px rgba(33,33,33, 0.1);
+  padding: 1em;
 }
 
-body {
-  background-color: #101010;
-  color: #ebebeb;
-  font-family: 'Poppins', sans-serif;
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.create-form input {
+  border: none;
+  border-radius: 2px;
+  padding: 0.4em;
+  outline: none;
+  font-family: inherit;
+}
+
+.create-form button {
+  border: none;
+  border-radius: 2px;
+  padding: 0.4em;
+  font-family: inherit;
+}
+
+.users-list {
+  margin-left: 2.4em;
+  margin-right: 2.4em;
+  list-style-type: none;
+}
+
+.users-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.users-list li a {
+  padding-left: 10px;
+}
+
+.users-list li a:first-child {
+  text-align: right;
+  color: #4287f5;
+}
+
+.users-list li a:last-child {
+  text-align: right;
+  color: #f54242;
 }
